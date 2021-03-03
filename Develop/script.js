@@ -25,7 +25,6 @@ function  generatePassword() {
   var specChars;
   var chosenSet;
   var password;
-  
     // while loop requests user imput for password length and checks input for acceptable criteria
   while (trueFalse) {
     passLength = window.prompt("Choose a password length between 8 and 128");
@@ -46,41 +45,53 @@ function  generatePassword() {
       trueFalse = false; 
     }
   }
-  // Upper case letter check
-  trueFalse = window.confirm("Should upper case letters be included?");
-  if (trueFalse){
-    upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-  } else {
-    upperCase = [];
+  // while loop wraps character selection and ensures one type of character is selected
+  trueFalse=true;
+  while (trueFalse) {
+    // Upper case letter check
+    trueFalse = window.confirm("Should upper case letters be included?");
+    if (trueFalse){
+      upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    } else {
+      upperCase = [];
+    }
+    // Lower case letter check
+    trueFalse = window.confirm("Should lower case letters be included?");
+    if (trueFalse) {
+      lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    } else {
+      lowerCase = [];
+    }
+    // Number check
+    trueFalse = window.confirm("Should numbers be included?");
+    if(trueFalse) {
+      nums = ["0","1","2","3","4","5","6","7","8","9"];
+    }else{
+      nums=[];
+    }
+    // Special letter check
+    trueFalse = window.confirm("Should special characters be included?");
+    if (trueFalse) {
+      specChars=["!","@","#","$","%","^","&","*","-","+","*"];
+    }else{
+      specChars=[];
+    }
+    // concatenate chosen characters into one set
+    chosenSet = upperCase.concat(lowerCase.concat(nums.concat(specChars)));
+    // checks to make sure user selected at least one character set
+    if (chosenSet.length < 1) {
+      trueFalse=true
+      alert("you need to select password characters");    
+    } else {
+      trueFalse = false;
+    }
   }
-  // Lower case letter check
-  trueFalse = window.confirm("Should lower case letters be included?");
-  if (trueFalse) {
-    lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-  } else {
-    lowerCase = [];
+  password = chosenSet[parseInt(chosenSet.length * Math.random())];
+  for (var i = 1; i < passLength; i++){
+    password += chosenSet[parseInt(chosenSet.length * Math.random())];
+    console.log(password);
   }
-// Number check
-trueFalse = window.confirm("Should numbers be included?");
-  if(trueFalse) {
-    nums = ["0","1","2","3","4","5","6","7","8","9"];
-  }else{
-    nums=[];
-  }
-// Special letter check
-trueFalse = window.confirm("Should special characters be included?");
-  if (trueFalse) {
-    specChars=["!","@","#","$","%","^","&","*","-","+","*"];
-  }else{
-    specChars=[];
-  }
-  // concatenate chosen characters into one set
-  chosenSet = upperCase.concat(lowerCase.concat(nums.concat(specChars)));
-  if (chosenSet = []){
-    trueFalse=true
-    alert("you need to select password characters");    
-  }
-
+  return password;
 }
 
 // https://stackoverflow.com/questions/37287093/starting-a-javascript-prompt-after-a-button-is-clicked/37287126
