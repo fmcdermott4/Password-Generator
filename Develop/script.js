@@ -18,6 +18,10 @@ function writePassword() {
 //Creates the password
 function  generatePassword() {
   var trueFalse = true;
+  var upperCase;
+  var lowerCase;
+  var specChars;
+  var nums;
   // while loop requests user imput for password length and checks input for acceptable criteria
   while (trueFalse) {
     var passLength;
@@ -39,6 +43,21 @@ function  generatePassword() {
       trueFalse = false; 
     }
   }
+  // Upper case letter check
+  trueFalse = window.confirm("Should upper case letters be included?")
+  if (trueFalse){
+    upperCase = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z];
+  } else {
+    upperCase = [];
+  }
+  // Lower case letter check
+  trueFalse = window.confirm("Should lower case letters be included?")
+  if (trueFalse) {
+    lowerCase = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
+  } else {
+    lowerCase = [];
+  }
+  
   return passLength * 10;
 }
 
