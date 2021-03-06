@@ -4,7 +4,7 @@ A secure password can be difficult to come up with, especially if there are spec
 ### Deployed Project
 https://fmcdermott4.github.io/Password-Generator/
 #### Credits
-Resources for this project were found at the current web sites:
+Resources for this project were found at the below web sites:
 https://stackoverflow.com/questions/37287093/starting-a-javascript-prompt-after-a-button-is-clicked/37287126
 https://stackoverflow.com/questions/9334636/how-to-create-a-dialog-with-yes-and-no-options
 https://www.w3schools.com/js/js_random.asp
